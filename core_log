@@ -1,0 +1,27 @@
+2019/05/15 10:41:33 This is a test log entry
+2019/05/15 10:43:53 Server has started
+2019/05/15 10:47:07 Server has started
+2019/05/15 10:47:12 Cattegory was stored, with titleTest b
+2019/05/15 10:58:47 Server has started
+2019/05/15 11:12:37 Server has started
+2019/05/15 11:12:42 Error connecting to sql to store category with titleTest bc.context is 
+2019/05/16 02:26:01 Server has started
+2019/05/16 02:34:39 Category with title Vehicles & Accessorieswas stored by c.context: 
+2019/05/16 02:35:40 Category with title Automotiveswas stored by c.context: 
+2019/05/16 02:36:11 Category with title Electric Carswas stored by c.context: 
+2019/05/16 02:36:22 Category with title New Carswas stored by c.context: 
+2019/05/16 02:36:29 Category with title Used Carswas stored by c.context: 
+2019/05/17 05:56:15 Category with title Buswas stored by c.context: 
+2019/05/17 05:56:17 Error connecting to sql to store category with titleBusc.context is 
+2019/05/17 06:00:14 Server has started
+2019/05/17 06:09:48 Category with title Bushwas stored by c.context: 
+2019/05/17 07:06:17 Server has started
+2019/05/17 07:06:26 Error connecting to sql to store category with titleBushc.context is 
+2019/05/17 07:07:24 Category with title fgdwas stored by c.context: 
+2019/05/17 08:19:03 Server has started
+2019/05/17 08:19:15 Error connecting to sql to store category with titlefgdc.context is 
+2019/05/17 08:19:20 Category with title fgddwas stored by c.context: 
+2019/05/17 10:59:00 Server has started
+2019/05/17 11:04:40 Category with title was stored by c.context: 
+2019/05/17 11:06:55 Error connecting to sql to store category with titlec.context is 
+2019/05/17 11:16:49 Server has started
