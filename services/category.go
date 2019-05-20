@@ -25,12 +25,12 @@ func CreateCategory(c *gin.Context) {
 
 	// Create
 	var category = model.Category{Title: category_title, Parent: category_parent, Slug: category_slug}
-	m := database.Conn.Create(&category)
+	q := database.Conn.Create(&category)
 
-	if m.Error != nil {
+	if q.Error != nil {
 		log.Println("Error connecting to sql to store category with title" + category_title + "c.context is " )
 		c.JSON(http.StatusBadRequest, gin.H{	
-			"sql": m.Error,
+			"sql": q.Error,
 		})
 	
 		return
@@ -41,7 +41,10 @@ func CreateCategory(c *gin.Context) {
 
 
 	c.JSON(http.StatusOK, gin.H{
-		"Success": category.Id,
+		"id": category.Id,
+		"title": category.Title,
+		"slug":category.Slug,
+		"parent": category.Parent,
 	})
 
 	return
@@ -55,9 +58,45 @@ func CreateCategory(c *gin.Context) {
 // Read Category
 func ReadCategory(c *gin.Context) {
 
-	//category_id := c.PostForm("category_id")
+	
+	var Category []model.Category
+
+	// Read
+    q := database.Conn.Where("parent = ?", "0").Find(&Category)
+
+	if q.Error != nil {
+		log.Println("Error connecting to sql to read all categories" )
+		c.JSON(http.StatusBadRequest, gin.H{	
+			"sql": q.Error,
+		})
+	
+		return
+
+	}
+
+
+	log.Println("Success reading all parent categories " )
+
+
+	c.JSON(http.StatusOK, Category)
+
+	return
+
 
 }
+
+// Read Category By Parent ID
+func ReadCategoryByParentId(c *gin.Context) {
+
+
+}
+
+// Read Category By ID
+func ReadCategoryById(c *gin.Context) {
+
+
+}
+
 
 
 // Update Category

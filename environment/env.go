@@ -1,4 +1,4 @@
 package environment
 
-var Host = "mc"
+var Host = "Terry"
 var Build  = "dev"
