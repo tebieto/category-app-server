@@ -29,8 +29,8 @@ func CreateCategory(c *gin.Context) {
 
 	if m.Error != nil {
 		log.Println("Error connecting to sql to store category with title" + category_title + "c.context is " )
-		c.JSON(http.StatusBadRequest, gin.H{
-			"Error": m.Error,
+		c.JSON(http.StatusBadRequest, gin.H{	
+			"sql": m.Error,
 		})
 	
 		return

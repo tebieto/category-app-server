@@ -11,7 +11,7 @@ import (
 
 // Category controller
 func Category(c *gin.Context) {
-
+	fmt.Println(c.PostForm("action"))
 	crud_action := c.PostForm("action")
 
 	fmt.Println(crud_action)
