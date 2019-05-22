@@ -62,7 +62,7 @@ func ReadCategory(c *gin.Context) {
 	var Category []model.Category
 
 	// Read
-    q := database.Conn.Where("parent = ?", "0").Find(&Category)
+    q := database.Conn.Where("parent = ? AND is_deleted = ?", "0", "0").Find(&Category)
 
 	if q.Error != nil {
 		log.Println("Error connecting to sql to read all categories" )
@@ -88,6 +88,30 @@ func ReadCategory(c *gin.Context) {
 // Read Category By Parent ID
 func ReadCategoryByParentId(c *gin.Context) {
 
+	var Category []model.Category
+
+	category_parent, _ := strconv.Atoi(c.PostForm("category_parent"))
+
+	// Read
+    q := database.Conn.Where("parent = ? AND is_deleted = ?", category_parent, "0").Find(&Category)
+
+	if q.Error != nil {
+		log.Println("Error connecting to sql to read all categories" )
+		c.JSON(http.StatusBadRequest, gin.H{	
+			"sql": q.Error,
+		})
+	
+		return
+
+	}
+
+
+	log.Println("Success reading all parent categories " )
+
+
+	c.JSON(http.StatusOK, Category)
+
+	return
 
 }
 
@@ -111,6 +135,29 @@ func UpdateCategory(c *gin.Context) {
 // Delete Category
 func DeleteCategory(c *gin.Context) {
 
-	//category_id := c.PostForm("category_id")
+	var Category []model.Category
+	
+	category_id, _ := strconv.Atoi(c.PostForm("category_id"))
+
+	// delete
+    q := database.Conn.Model(&Category).Where("id = ?", category_id).Update("is_deleted", 1)
+
+	if q.Error != nil {
+		log.Println("Error connecting to sql to delete category" )
+		c.JSON(http.StatusBadRequest, gin.H{	
+			"sql": q.Error,
+		})
+	
+		return
+
+	}
+
+
+	log.Println("Success deleteting category with id : " + c.PostForm("category_id") )
+
+
+	c.JSON(http.StatusOK, "")
+
+	return
 
 }

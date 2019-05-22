@@ -8,6 +8,7 @@ type Category struct {
 	Title     string `gorm:"NOT NULL; UNIQUE" json:"title"`
 	Slug	string	`gorm:"NOT NULL UNIQUE" json:"slug"`
 	Parent     int `gorm:"NOT NULL" json:"parent"`
+	IsDeleted     int `gorm:"NOT NULL" sql:"DEFAULT:0" json:"is_deleted"`
 }
 
 type ipRange struct {
